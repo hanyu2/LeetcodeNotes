@@ -21,7 +21,8 @@ public class MaxSumOfRectangleNoLargerThanK {
 		return max;
 	}
 	
-	//
+	//试验每一列
+	//O(mnnlogm)
 	public int maxSumSubmatrix(int[][] matrix, int k) {
         int m = matrix.length;
         int n = matrix[0].length;
