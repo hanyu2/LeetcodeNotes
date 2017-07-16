@@ -3,7 +3,9 @@ package d715;
 public class PaintHouse2 {
 	// 类似paint house 1
 	// 每一轮记录两个上一轮最小的值
-
+	//答案利用原数组，不开辟新数组
+	//记录上一轮最小值的index，最后返回不需要再扫一遍
+	//每一轮只扫一遍
 	public static int minCostII(int[][] costs) {
 		// Write your code here
 		int m = costs.length;
