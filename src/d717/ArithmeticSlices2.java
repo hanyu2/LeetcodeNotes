@@ -41,7 +41,6 @@ public class ArithmeticSlices2 {
 	public int numberOfArithmeticSlices2(int[] A) {
 	    int res = 0;
 	    Map<Integer, Integer>[] map = new Map[A.length];
-			
 	    for (int i = 0; i < A.length; i++) {
 	        map[i] = new HashMap<>(i);
 	        	
