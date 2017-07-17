@@ -11,7 +11,7 @@ public class PalindromePartitioning2 {
 
         for(int i = n - 1; i >= 0; i--){
         	dp[i] = n - i - 1;
-        	for(int j = i + 1; j < n; j++){
+        	for(int j = i; j < n; j++){//j = i not i + 1
         		if(s.charAt(i) == s.charAt(j)){
         			if(j - i < 2 || isPal[i + 1][j - 1]){
         				isPal[i][j] = true;
