@@ -50,7 +50,7 @@ public class LargestRectangleInHistogram {
 		}
 		return max;
 	}
-
+	//不记录左右长度，记录左右的index
 	public static int largestRectangleArea2(int[] height) {
 		if (height == null || height.length == 0) {
 			return 0;
