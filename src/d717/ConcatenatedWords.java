@@ -7,29 +7,39 @@ import java.util.List;
 import java.util.Set;
 
 public class ConcatenatedWords {
-	public static List<String> findAllConcatenatedWords2InADict(String[] words) {
-		List<String> list = new ArrayList<String>();
-		Set<String> set = new HashSet(Arrays.asList(words));
-
+	public static List<String> findAllConcatenatedWordsInADict(String[] words) {
+		List<String> res = new ArrayList<String>();
+		if (words.length <= 1) {
+			return res;
+		}
+		Set<String> set = new HashSet<String>(Arrays.asList(words));
 		for (String word : words) {
+			if (word.length() == 0) {
+				continue;
+			}
 			set.remove(word);
-			if (dfs(word, set, ""))
-				list.add(word);
+			if (search(word, set)) {
+				res.add(word);
+			}
 			set.add(word);
 		}
-		return list;
+		return res;
 	}
 
-	private static boolean dfs(String word, Set<String> set, String previous) {
-		if (!previous.equals(""))
-			set.add(previous);
-		if (set.contains(word))
+	public static boolean search(String word, Set<String> set) {
+		if (word.length() == 0) {
 			return true;
-
-		for (int i = 1; i < word.length(); i++) {
+		}
+		if (set.contains(word)) {
+			return true;
+		}
+		for (int i = 1; i <= word.length(); i++) {
 			String prefix = word.substring(0, i);
-			if (set.contains(prefix) && dfs(word.substring(i, word.length()), set, previous + prefix)) {
-				return true;
+			if (set.contains(prefix)) {
+				if (search(word.substring(i), set)) {
+					set.add(word);
+					return true;
+				}
 			}
 		}
 		return false;
@@ -37,6 +47,6 @@ public class ConcatenatedWords {
 
 	public static void main(String[] args) {
 		String[] words = { "cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat" };
-		findAllConcatenatedWords2InADict(words);
+		findAllConcatenatedWordsInADict(words);
 	}
 }
