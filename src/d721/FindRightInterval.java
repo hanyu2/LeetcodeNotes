@@ -45,19 +45,19 @@ public class FindRightInterval {
 		}
 		return starts[left];
 	}
-	
+
 	public int[] findRightInterval2(Interval[] intervals) {
-        TreeMap<Integer, Integer> starts = new TreeMap<>();
-        int res[] = new int[intervals.length];
-        for (int i = 0; i < intervals.length; i++) {
-            starts.put(intervals[i].start, i);
-        }
-        for (int i = 0; i < intervals.length; i++) {
-            Map.Entry<Integer, Integer> pos = starts.ceilingEntry(intervals[i].end);
-            res[i] = pos == null ? -1 : pos.getValue();
-        }
-        return res;
-    }
+		TreeMap<Integer, Integer> starts = new TreeMap<>();
+		int res[] = new int[intervals.length];
+		for (int i = 0; i < intervals.length; i++) {
+			starts.put(intervals[i].start, i);
+		}
+		for (int i = 0; i < intervals.length; i++) {
+			Map.Entry<Integer, Integer> pos = starts.ceilingEntry(intervals[i].end);
+			res[i] = pos == null ? -1 : pos.getValue();
+		}
+		return res;
+	}
 
 }
 
