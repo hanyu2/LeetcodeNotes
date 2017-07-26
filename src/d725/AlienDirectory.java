@@ -8,6 +8,8 @@ import java.util.Queue;
 import java.util.Set;
 
 public class AlienDirectory {
+	//pre, next不能一样
+	//set不能直接add，要判断元素有没有，否则会重复计算加入元素的indegree
 	public static String alienOrder(String[] words) {
 		Map<Character, Set<Character>> map = new HashMap<Character, Set<Character>>();
 		int[] indegree = new int[26];
@@ -41,7 +43,7 @@ public class AlienDirectory {
 		while (!q.isEmpty()) {
 			char c = q.poll();
 			sb.append(c);
-			if (map.containsKey(c)) {//
+			if (map.containsKey(c)) {//有的元素可能没有out degree
 				for (char next : map.get(c)) {
 					indegree[next - 'a']--;
 					if (indegree[next - 'a'] == 0) {
