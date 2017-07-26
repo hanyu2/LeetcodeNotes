@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class CourseSchedule3 {
+	//按deadline排序，去掉耗时最长的
 	public int scheduleCourse(int[][] courses) {
         Arrays.sort(courses, new Comparator<int[]>(){
             public int compare(int[] c1, int[] c2){
